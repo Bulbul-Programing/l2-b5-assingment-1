@@ -23,4 +23,29 @@ Another distinction between types and interfaces lies in their handling of union
 Both types and interfaces can delineate function types, but types are favored for legibility and advanced capabilities, such as conditional and union types. Tuple types can only be delineated using the type keyword.
 
 
+## What is the use of the key of keyword in TypeScript? Provide an example.
+
+In JavaScript, we often use **`Object.keys`** to get a list of property keys. In the TypeScript world, the equivalent concept is the **`keyof`** operator. Although they are similar, **`keyof`** only works on the type level and returns a literal union type, while **`Object.keys`** returns values.
+
+#### The keyof operator takes an object type and produces a string or numeric literal union of its keys.
+
+```
+type user = {
+ name: string;
+ phoneNumber: number;
+} 
+type userKey= keyof user; // "name" | "phoneNumber"
+
+```
+
+In this example, We apply the **`keyof`** operator to the **``user``** type, and we get a **`userKey`** type in return, which represents all the property names. The result is a union of string literal types: **`"name" | "phoneNumber"`**
+
+In this example **`keyof`** operator is used for an object type. It can also be used for non-object types, including primitive types. Below are a few examples:
+
+```
+type BooleanKeys = keyof boolean; // "valueOf"
+
+type NumberKeys = keyof number; // "toString" | "valueOf" | "toFixed" | "toExponential" | "toPrecision" | "toLocaleString"
+
+```
 
